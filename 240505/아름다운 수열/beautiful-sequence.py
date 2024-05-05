@@ -14,6 +14,8 @@ for i in range(1, n - m + 2):
     # 순서만 바꾼 것 + 주어준 수열 그대로
     if m_arr == temp_arr:
         ans.append(i)
+        continue
+
     # 동일한 숫자를 더하거나 빼고 순서를 바꿔 나오는 수열 check
     dif_arr = list(map(lambda x, y: x - y, temp_arr, m_arr))
     check = True
