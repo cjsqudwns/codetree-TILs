@@ -26,5 +26,6 @@ num_arr = []
 for _ in range(n):
     num_arr.append(int(input()))
 result = 0
-backtracking(0, 0, 0)
+for i in range(n):
+    backtracking(1, 1, num_arr[i])
 print(result)
