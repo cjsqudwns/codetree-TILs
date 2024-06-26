@@ -4,25 +4,29 @@ def check_carry(n1, n2):
         c2 = n2 % 10
         if c1 + c2 >= 10:
             return True
-        n1 /= 10
-        n2 /= 10
+        n1 //= 10
+        n2 //= 10
     return False
 
 
-def backtracking(cnt, depth, sum):
+def backtracking(cnt, depth, current_sum):
     global result
     result = max(cnt, result)
     if depth == n:
+        memo[(cnt, depth, current_sum)] = result
         return
+
     for i in range(depth, n):
-        if not check_carry(sum, num_arr[i]):
-            backtracking(cnt + 1, i + 1, sum + num_arr[i])
+        if not check_carry(current_sum, num_arr[i]):
+            backtracking(cnt + 1, i + 1, current_sum + num_arr[i])
+
+    memo[(cnt, depth, current_sum)] = result
 
 
 n = int(input())
-num_arr = []
-for _ in range(n):
-    num_arr.append(int(input()))
+num_arr = [int(input()) for _ in range(n)]
+
 result = 0
+memo = {}
 backtracking(0, 0, 0)
 print(result)
