@@ -1,8 +1,16 @@
 n, k = map(int, input().split())
-arr = [0 for _ in range(n)]
-for i in range(k):
+arr = [0] * (n + 1)
+
+for _ in range(k):
     a, b = map(int, input().split())
-    for j in range(a, b + 1):
-        arr[j - 1] += 1
+    arr[a - 1] += 1
+    if b < n:
+        arr[b] -= 1
+
+for i in range(1, n):
+    arr[i] += arr[i - 1]
+
+arr = arr[:n]
 arr.sort()
-print(arr[int(n / 2)])
+
+print(arr[n // 2])
