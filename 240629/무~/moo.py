@@ -10,4 +10,4 @@ def calculate_s(depth, before_str):
 
 
 n = int(input())
-calculate_s(0, "moo")
+calculate_s(1, "moo")
