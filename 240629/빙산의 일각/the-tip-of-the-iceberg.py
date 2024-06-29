@@ -1,7 +1,14 @@
 n = int(input())
-h_arr = [int(input()) for _ in range(n)]
+dist_h_arr = []
+h_arr = []
+for _ in range(n):
+    h = int(input())
+    h_arr.append(h)
+    if h not in dist_h_arr:
+        dist_h_arr.append(h)
 ans = 0
-for i in range(1, max(h_arr)):
+dist_h_arr.sort()
+for i in dist_h_arr:
     cnt = 0
     isHigh = False
     for h in h_arr:
