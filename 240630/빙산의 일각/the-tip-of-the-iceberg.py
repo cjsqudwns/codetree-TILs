@@ -4,19 +4,19 @@ h_arr = [int(input()) for _ in range(n)]
 # 고유한 높이값 추출
 unique_heights = sorted(set(h_arr))
 
-ans = 0
+max_chunks = 0
 
-# 각 고유 높이에 대해 최대 연속 건물 수 계산
+# 각 고유 높이에 대해 최대 덩어리 수 계산
 for height in unique_heights:
-    cnt = 0
-    max_cnt = 0
+    chunks = 0
+    in_chunk = False
     for h in h_arr:
         if h > height:
-            cnt += 1
+            if not in_chunk:
+                chunks += 1
+                in_chunk = True
         else:
-            max_cnt = max(max_cnt, cnt)
-            cnt = 0
-    max_cnt = max(max_cnt, cnt)
-    ans = max(ans, max_cnt)
+            in_chunk = False
+    max_chunks = max(max_chunks, chunks)
 
-print(ans)
+print(max_chunks)
