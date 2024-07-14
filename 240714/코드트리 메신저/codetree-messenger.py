@@ -23,15 +23,16 @@ for _ in range(q):
     # 알림을 받을 수 있는 채팅방 수 조회
     elif q_info[0] == 500:
         cnt = 0
-        for i in range(q_info[1] + 1, n + 1):
-            auth = authority[i]
-            cur_node = i
-            while True:
-                if cur_node == q_info[1]:
-                    cnt += 1
-                if not notification[cur_node] or auth <= 0:
-                    break
-                else:
-                    cur_node = parents[cur_node]
-                    auth -= 1
+        for i in range(1, n + 1):
+            if q_info[1] != i:
+                auth = authority[i]
+                cur_node = i
+                while True:
+                    if cur_node == q_info[1]:
+                        cnt += 1
+                    if not notification[cur_node] or auth <= 0:
+                        break
+                    else:
+                        cur_node = parents[cur_node]
+                        auth -= 1
         print(cnt)
