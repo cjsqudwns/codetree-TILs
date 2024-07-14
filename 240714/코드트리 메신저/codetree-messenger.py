@@ -30,6 +30,7 @@ for _ in range(q):
                 while True:
                     if cur_node == q_info[1]:
                         cnt += 1
+                        break
                     if not notification[cur_node] or auth <= 0:
                         break
                     else:
